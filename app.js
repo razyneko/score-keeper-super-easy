@@ -12,10 +12,6 @@ let p2Score = 0;
 let winningScore = 5;
 let isGameOver = false;
 
-options.addEventListener('change', (e) => {
-    winningScore = parseInt(e.target.value);
-})
-
 player1Button.addEventListener('click', function() {
     if (!isGameOver) {
         p1Score += 1;
@@ -40,7 +36,14 @@ player2Button.addEventListener('click', function() {
     }
 });
 
-resetButton.addEventListener('click', function() {
+options.addEventListener('change', (e) => {
+    winningScore = parseInt(e.target.value);
+    reset();
+})
+
+resetButton.addEventListener('click', reset)
+
+function reset() {
     isGameOver = false;
     p1Score = 0;
     p2Score = 0;
@@ -48,5 +51,4 @@ resetButton.addEventListener('click', function() {
     player2Score.textContent = 0;
     player1Score.style.color = '';
     player2Score.style.color = '';
-});
-
+}
